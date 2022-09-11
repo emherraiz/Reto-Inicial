@@ -1,6 +1,6 @@
 tablero = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['a', 0, 'a']]
 posibles_saltos = [[1, 2], [-1, 2], [1, -2], [-1, -2], [2, 1], [2, -1], [-2, 1], [-2, -1]]
-suma = 0
+
 
 def en_el_tablero(i, j):
     if 0 <= i <= 3 and 0 <= j <=2:
@@ -9,16 +9,26 @@ def en_el_tablero(i, j):
         return False
 
 
-def posibilidades_validas(i, j, numero_de_saltos):
-    suma = 0
-    if numero_de_saltos:
+def posibilidades_validas(i, j, numero_de_saltos_inicial, numero_de_saltos_actual, suma_final = 0):
+    if numero_de_saltos_actual == 0:
         for k in posibles_saltos:
             salto_i = i+k[0]
             salto_j = j+k[1]
             if en_el_tablero(salto_i, salto_j) and isinstance(tablero[salto_i][salto_j], int):
-                suma += 1 + posibilidades_validas(salto_i, salto_j, numero_de_saltos - 1)
+                if numero_de_saltos_actual == 0:
+                    suma += 1
 
+    else:
+        for k in posibles_saltos:
+            salto_i = i+k[0]
+            salto_j = j+k[1]
+            if en_el_tablero(salto_i, salto_j) and isinstance(tablero[salto_i][salto_j], int):
+                numero_de_saltos_actual -= 1
+                suma += posibilidades_validas(i, j, numero_de_saltos_inicial, numero_de_saltos_actual, suma)
+    
     return suma
+
+
 
 '''
     for i in range(4):
