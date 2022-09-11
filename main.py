@@ -9,25 +9,19 @@ def en_el_tablero(i, j):
         return False
 
 
-def posibilidades_validas(i, j, numero_de_saltos_inicial, numero_de_saltos_actual, suma_final = 0):
-    if numero_de_saltos_actual == 0:
-        for k in posibles_saltos:
-            salto_i = i+k[0]
-            salto_j = j+k[1]
-            if en_el_tablero(salto_i, salto_j) and isinstance(tablero[salto_i][salto_j], int):
-                if numero_de_saltos_actual == 0:
-                    suma += 1
+def posibilidades_validas(i, j, numero_de_saltos, suma = 0):
+    numero_de_saltos -= 1
+    for k in posibles_saltos:
+        salto_i = i+k[0]
+        salto_j = j+k[1]
+        if en_el_tablero(salto_i, salto_j) and isinstance(tablero[salto_i][salto_j], int):
+            if numero_de_saltos == 0:
+                suma += 1
 
-    else:
-        for k in posibles_saltos:
-            salto_i = i+k[0]
-            salto_j = j+k[1]
-            if en_el_tablero(salto_i, salto_j) and isinstance(tablero[salto_i][salto_j], int):
-                numero_de_saltos_actual -= 1
-                suma += posibilidades_validas(i, j, numero_de_saltos_inicial, numero_de_saltos_actual, suma)
-    
+            else:
+                suma = posibilidades_validas(salto_i, salto_j, numero_de_saltos, suma)
+
     return suma
-
 
 
 '''
@@ -47,7 +41,7 @@ suma_final = 0
 for x in range(4):
     for y in range(3):
         if isinstance(tablero[x][y], int):
-            suma_final += posibilidades_validas(x, y, 2)
+            suma_final += posibilidades_validas(x, y, 3)
 
 print(suma_final)
 
