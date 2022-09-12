@@ -26,10 +26,10 @@ def posibilidades_validas_por_posicion(i, j, numero_de_saltos, suma = 0):
 
 def posibilidades_validas(numero_de_saltos):
     suma_final = 0
-    for x in range(4):
-        for y in range(3):
-            if isinstance(tablero[x][y], int):
-                suma_final += posibilidades_validas_por_posicion(x, y, numero_de_saltos)
+    for i in range(4):
+        for j in range(3):
+            if isinstance(tablero[i][j], int):
+                suma_final += posibilidades_validas_por_posicion(i, j, numero_de_saltos)
 
     return suma_final
 
