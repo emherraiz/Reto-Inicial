@@ -34,5 +34,5 @@ def posibilidades_validas(numero_de_saltos):
     return suma_final
 
 
-print(posibilidades_validas(3))
+print(posibilidades_validas(5))
 
