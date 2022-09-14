@@ -35,4 +35,3 @@ def posibilidades_validas(numero_de_saltos):
 
 
 print(posibilidades_validas(5))
-
