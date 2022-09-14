@@ -1,7 +1,7 @@
 import numpy as np
 n = 4
 tablero = np.zeros((n,n))
-tablero_prueba = [[1, 0, 0],[0, 1, 0],[0, 0, 1]]
+tablero_prueba = [[1, 0, 0],[0, 0, 1],[0, 0, 0]]
 
 def n_damas(tablero):
     suma = 0
@@ -18,17 +18,17 @@ def rotar_tablero(tablero):
 
 
 def dama_atacada(tablero):
-    atacada = False
+
     n = len(tablero)
     for fila in tablero:
         if sum(fila) > 1:
-            atacada = True
+            return True
 
     tablero_transpuesta = np.transpose(tablero)
 
     for columna in tablero_transpuesta:
         if sum(columna) > 1:
-            atacada = True
+            return True
 
     tablero_rotado = rotar_tablero(tablero)
 
@@ -45,10 +45,10 @@ def dama_atacada(tablero):
                     suma_diagonal_secundaria += 1
 
         if suma_diagonal_principal > 1 or suma_diagonal_secundaria > 1:
-            atacada = True
+            return True
 
 
-    return atacada
+    return False
 
 
 print(dama_atacada(tablero_prueba))
