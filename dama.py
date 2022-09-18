@@ -66,7 +66,13 @@ def posibilidad(n,x,y):
                 tablero[fila][casilla]=0
     return tablero
 
-def num_posibilidades(n):
-    pass
-print(posibilidad(3,0,0))
+def tableros_posibles(n):
+    tableros=[]
+    for i in range(n):
+        for j in range(n):
+            #if posibilidad(n,i,j) not in tableros:
+                tableros.append(posibilidad(n,i,j))
+    return tableros
+
+print(tableros_posibles(3))
 
