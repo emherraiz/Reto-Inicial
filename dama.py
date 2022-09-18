@@ -53,3 +53,15 @@ def dama_atacada(tablero):
 
 print(dama_atacada(tablero_prueba))
 
+
+def num_posibilidades(n):
+    tablero=np.zeros((n,n))
+    for fila in range(n):
+        for casilla in range(n):
+            tablero[fila][casilla]=1
+            if dama_atacada(tablero)==False:
+                pass
+            else:
+                tablero[fila][casilla]=0
+    return tablero
+print(num_posibilidades(3))
