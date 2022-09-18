@@ -53,9 +53,10 @@ def dama_atacada(tablero):
 
 print(dama_atacada(tablero_prueba))
 
-
-def num_posibilidades(n):
+#n=dim , (x,y)=colocacion primera dama
+def posibilidad(n,x,y):
     tablero=np.zeros((n,n))
+    tablero[x,y]=1
     for fila in range(n):
         for casilla in range(n):
             tablero[fila][casilla]=1
@@ -64,4 +65,8 @@ def num_posibilidades(n):
             else:
                 tablero[fila][casilla]=0
     return tablero
-print(num_posibilidades(3))
+
+def num_posibilidades(n):
+    pass
+print(posibilidad(3,0,0))
+
