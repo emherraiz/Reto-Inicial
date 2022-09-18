@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 n = 4
 tablero = np.zeros((n,n))
 tablero_prueba = [[1, 0, 0],[0, 0, 1],[0, 0, 0]]
@@ -76,3 +77,6 @@ def tableros_posibles(n):
 
 print(tableros_posibles(3))
 
+#Falta eliminar tableros repetidos de la lista tableros y
+#crear un bucle para que siga buscando posibilidades que no esten en esa lista hasta que
+#len(tableros)=n
