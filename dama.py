@@ -71,12 +71,12 @@ def tableros_posibles(n):
     tableros=[]
     for i in range(n):
         for j in range(n):
-            #if posibilidad(n,i,j) not in tableros:
+            if n_damas(posibilidad(n,i,j))==True:
                 tableros.append(posibilidad(n,i,j))
     return tableros
 
-print(tableros_posibles(3))
+print(tableros_posibles(8))
 
 #Falta eliminar tableros repetidos de la lista tableros y
 #crear un bucle para que siga buscando tableros que no esten en esa lista hasta que
-#len(tableros)=n*n
+#esten todos los posibles tableros
